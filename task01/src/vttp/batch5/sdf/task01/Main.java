@@ -16,13 +16,7 @@ public class Main {
 	public static void main(String[] args) {
         
 
-		// 1. Program accept single para for CSV file name: day.csv
-        if(args.length == 0){
-            System.err.println("Error: No file name provided.");
-            return; // End program if nth given
-        }
-
-        String fileName = args[0];
+        String fileName = "day.csv";
         Path p = Paths.get("task01", fileName); // Input file
         String absPath = p.toAbsolutePath().toString();
 
@@ -34,7 +28,7 @@ public class Main {
         else
         {
             System.out.printf("File found at <%s> \n", absPath);
-            System.out.println("Analysing.."); // continue analysing only if day.csv is provided as args[0] 
+            System.out.println("Analysing.."); // continue analysing only if day.csv found
             System.out.println();
         }
 
