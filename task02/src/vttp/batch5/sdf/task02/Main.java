@@ -136,6 +136,18 @@ public class Main {
     	}
 	}
 		
-
 }
 
+
+// PSUEDO CODE
+// 1. Program start
+//	a. Ensure args[0] passed in .txt for current state of tictactoe board to analyse
+// 2. initiliase empty board
+// 	a. populate empty board with information from .txt file
+// 3. Find coordinates of empty boxes on the board
+// 4. Check utility
+//	a. Check if player will win after place 'X' on any of the empty coordinates assign utility 1
+// 	b. If player cannot win after placing, check if will lose immediately after placing, assign utility -1
+//	c. If player neither wins or lose after placing, assign utility 0
+// 5. display utility after checks
+// 6. Program ends
