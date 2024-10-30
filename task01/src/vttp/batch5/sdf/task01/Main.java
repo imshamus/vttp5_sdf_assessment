@@ -89,23 +89,23 @@ public class Main {
             fi.appStats(mr);
             System.out.printf("The highest (position) recorded number of cyclist was in %s (season), on a %s (day) in the month of %s (month). \n", fi.getSeasonHighest(), fi.getDayHighest(), fi.getMonthHighest());
             System.out.printf("There were a total of %d (total) cyclists. The weather was %s (weather).", fi.getHighestTotal(), fi.getWeatherHighest());
-            System.out.printf("%s (day) was a %b (holiday)\n", fi.getDayHighest(), fi.isHolidayHighest());
+            System.out.printf("%s (day) %s (holiday)\n", fi.getDayHighest(), checkHoliday(fi.isHolidayHighest()));
             System.out.println();
             System.out.printf("The second highest (position) recorded number of cyclist was in %s (season), on a %s (day) in the month of %s (month). \n", fi.getSeasonSecond(), fi.getDaySecond(), fi.getMonthSecond());
             System.out.printf("There were a total of %d (total) cyclists. The weather was %s (weather). \n", fi.getSecondHighest(), fi.getWeatherSecond());
-            System.out.printf("%s (day) was a %b (holiday). \n", fi.getDaySecond(), fi.isHolidaySecond());
+            System.out.printf("%s (day) %s (holiday). \n", fi.getDaySecond(), checkHoliday(fi.isHolidaySecond()));
             System.out.println();
             System.out.printf("The third highest (position) recorded number of cyclist was in %s (season), on a %s (day) in the month of %s (month). \n", fi.getSeasonThird(), fi.getDayThird(), fi.getMonthThird());
             System.out.printf("There were a total of %d (total) cyclists. The weather was %s (weather). \n", fi.getThirdHighest(), fi.getWeatherThird());
-            System.out.printf("%s (day) was a %b (holiday). \n", fi.getDayThird(), fi.isHolidayThird());
+            System.out.printf("%s (day) %s (holiday). \n", fi.getDayThird(), checkHoliday(fi.isHolidayThird()));
             System.out.println();
             System.out.printf("The fourth highest (position) recorded number of cyclist was in %s (season), on a %s (day) in the month of %s (month). \n", fi.getSeasonFourth(), fi.getDayFourth(), fi.getMonthFourth());
             System.out.printf("There were a total of %d (total) cyclists. The weather was %s (weather).\n", fi.getFourthHighest(), fi.getWeatherFourth());
-            System.out.printf("%s (day) was a %b (holiday). \n ", fi.getDayFourth(), fi.isHolidayFourth());
+            System.out.printf("%s (day) %s (holiday). \n ", fi.getDayFourth(), checkHoliday(fi.isHolidayFourth()));
             System.out.println();
             System.out.printf("The fifth highest (position) recorded number of cyclist was in %s (season), on a %s (day) in the month of %s (month). \n", fi.getSeasonFifth(), fi.getDayFifth(), fi.getMonthFifth());
             System.out.printf("There were a total of %d (total) cyclists. The weather was %s (weather). \n", fi.getFifthHighest(), fi.getWeatherFifth());
-            System.out.printf("%s (day) was a %b (holiday). \n", fi.getDayFifth(), fi.isHolidayFifth());
+            System.out.printf("%s (day) %s (holiday). \n", fi.getDayFifth(), checkHoliday(fi.isHolidayFifth()));
             System.out.println();
 
         }
@@ -124,6 +124,21 @@ public class Main {
         return returnValue;
     }
 
+    public static String checkHoliday(boolean holiday)
+    {
+        String output;
+
+        if(holiday)
+        {
+            output = "was a holiday.";
+        }
+        else
+        {
+            output = "was not a holiday";
+        }
+
+        return output;
+    }
 }
 
          
