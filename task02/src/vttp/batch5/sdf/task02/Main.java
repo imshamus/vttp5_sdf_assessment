@@ -37,7 +37,7 @@ public class Main {
 
 		System.out.println("Board: ");
 
-		String[][] board = new String[3][3]; // Initialize the board with 3x3 size;
+		String[][] board = new String[3][3]; // Initialise the board with 3x3 size;
 
 		List<String> inputs = new ArrayList<>();
 		List<Integer[]> coordinatesList = new ArrayList<>();
