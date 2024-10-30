@@ -49,7 +49,7 @@ public class Main {
 			{
                 System.out.println(line);
 
-				String[] tempList = line.split("");
+				String[] tempList = line.toUpperCase().split("");
 
 				String a = tempList[0];
 				String b = tempList[1];
@@ -85,7 +85,7 @@ public class Main {
             }
         }
 		
-		// Display x and y coordinates that are empty in current .txt file
+		// Place "X" at empty coordinates and check if win
 		System.out.println("x, y");
 		for (int i = 0 ; i < coordinatesList.size(); i++ )
 		{
@@ -104,11 +104,38 @@ public class Main {
                 System.out.print(board[i][j] + " | ");  // Print cell value
             }
             System.out.println();  // Move to next line after printing row
-            if (i < 2) { // Print separator between rows
+            if (i < 2) { // Print separator
                 System.out.println("   -------------");  // Row separator
             }
         }
 	}
+
+	// Check if player won
+    public static boolean checkWin(String symbol, String[][] board) 
+	{
+        for (int i = 0; i < 3; i++) 
+		{ 
+            if ((board[i][0] == symbol && board[i][1] == symbol && board[i][2] == symbol) // Row win
+				|| 
+                (board[0][i] == symbol && board[1][i] == symbol && board[2][i] == symbol)) // Column win
+			{
+				return true;
+            }
+        }
+
+		if ((board[0][0] == symbol && board[1][1] == symbol && board[2][2] == symbol) // Diagonal win
+			||
+		 	(board[0][2] == symbol && board[1][1] == symbol && board[2][0] == symbol)) // Diagonal win	
+        {
+			return true;
+		}
+
+		else
+		{
+			return false;
+    	}
+	}
+		
 
 }
 
