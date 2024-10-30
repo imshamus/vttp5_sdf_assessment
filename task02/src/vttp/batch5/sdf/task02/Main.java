@@ -68,8 +68,10 @@ public class Main {
 
 		int k = 0;
 
-		for (int i = 0; i < 3; i++) { // Loop through rows
-            for (int j = 0; j < 3; j++) { // Loop through columns
+		for (int i = 0; i < 3; i++) // Loop through rows
+		{ 
+            for (int j = 0; j < 3; j++) // Loop through columns
+			{ 
 
 				String input = inputs.get(k);
 				board[i][j] = input; // populate the board
@@ -86,28 +88,64 @@ public class Main {
         }
 		
 		// Place "X" at empty coordinates and check if win
-		System.out.println("x, y");
+		System.out.println("x, y, utility");
 		for (int i = 0 ; i < coordinatesList.size(); i++ )
 		{
 			Integer[] tempList = coordinatesList.get(i);
-			System.out.println(tempList[0] + ", " + tempList[1]);
+
+			int x = tempList[0];
+			int y = tempList[1];
+
+			String [][] tempBoard = boardCopy(board);
+			tempBoard[y][x] = "X";
+
+			int utility = utility(board);
+			System.out.println(x + ", " + y + ", " + utility);
 		}
 	
     }
 	
-	public static void printBoard(String[][] board)
+	// Copy board for player move
+	public static String[][] boardCopy(String[][] board) 
 	{
-		System.out.println("    X0  X1  X2");  // Print column headers
-        for (int i = 0; i < 3; i++) { // Loop through rows
-            System.out.printf("Y%d | ", i);  // Print row number
-            for (int j = 0; j < 3; j++) { // Loop through columns
-                System.out.print(board[i][j] + " | ");  // Print cell value
-            }
-            System.out.println();  // Move to next line after printing row
-            if (i < 2) { // Print separator
-                System.out.println("   -------------");  // Row separator
-            }
-        }
+		String[][] boardCopy = new String[3][3];
+
+		for (int i = 0; i < 3; i++) {
+			for (int j = 0; j < 3; j++) {
+				boardCopy[i][j] = board[i][j];
+			}
+		}
+		return boardCopy;
+	}
+
+	public static int utility(String[][] board)
+	{
+		// For checking if "X" wins next turn
+		if(checkWin("X", board))
+		{
+			return 1;
+		}
+
+		// For checking if "O" wins next turn
+		for (int i = 0; i < 3; i++) 
+		{
+			for (int j = 0; j < 3; j++) 
+			{
+				if (board[i][j].equals(".")) 
+				{
+					board[i][j] = "O";
+					if (checkWin("O", board)) 
+					{
+						board[i][j] = "."; // backtrack
+						return -1;
+					}
+					board[i][j] = "."; // backtrack
+				}
+			}
+		}
+
+		return 0; // neutral outcome
+
 	}
 
 	// Check if player won
@@ -130,10 +168,7 @@ public class Main {
 			return true;
 		}
 
-		else
-		{
-			return false;
-    	}
+		return false;
 	}
 		
 }
