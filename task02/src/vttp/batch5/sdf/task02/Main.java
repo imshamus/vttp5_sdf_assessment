@@ -105,6 +105,7 @@ public class Main {
 	
     }
 	
+	// METHODS
 	// Copy board for player move
 	public static String[][] boardCopy(String[][] board) 
 	{
